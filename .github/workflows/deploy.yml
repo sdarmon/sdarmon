@@ -28,7 +28,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist # Le dossier généré par Astro
-	if-no-files-found: error
 
   deploy:
     needs: build
