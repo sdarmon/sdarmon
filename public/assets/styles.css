@@ -53,8 +53,8 @@ html {
 
 body {
   min-height: 100%;
-  color: #333;
-  background-color: #fff;
+  color: #141717;
+background-color: #ffffff;
   margin: 0;
   font-family: 'Exo 2', sans-serif;
   font-size: 14px;
@@ -76,7 +76,7 @@ img {
   display: inline-flex;
   width: fit-content;
   align-items: center;
-  color: #fff;
+  color: #ffffff;
   line-height: inherit;
   cursor: pointer;
   background-color: #3898ec;
@@ -233,7 +233,7 @@ ul {
 
 body {
   color: #333;
-  background-color: #161616;
+  background-color: #141717 ;
   font-family: 'Exo 2', sans-serif;
   font-size: 14px;
   line-height: 20px;
@@ -294,8 +294,8 @@ p {
   width: 100%;
   height: 100%;
   max-width: 280px;
-  background-color: #1c1c1c;
-  border-right: 1px solid #353535;
+  background-color: #151818;
+  border-right: 1px solid #919191;
   padding: 32px;
 }
 
@@ -329,7 +329,7 @@ p {
 .niv-image {
   width: 48px;
   height: 48px;
-  border: 1px solid #353535;
+  border: 1px solid #141717;
   border-radius: 100px;
   margin-right: 12px;
 }
@@ -337,7 +337,7 @@ p {
 .main {
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(28, 28, 28, 0.64), rgba(28, 28, 28, 0.64)), url('./grid-top-right.svg'), linear-gradient(rgba(28, 28, 28, 0.24), rgba(28, 28, 28, 0.24));
+  background-image: linear-gradient(rgba(20, 23, 23, 0.64), rgba(20, 23, 23, 0.64)), url('./grid-top-right.svg'), linear-gradient(rgba(20, 23, 23, 0.24), rgba(20, 23, 23, 0.24));
   background-position: 0 0, 0 0, 0 0;
   background-size: auto, auto 1130px, auto;
   flex-direction: column;
