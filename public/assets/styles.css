@@ -340,6 +340,12 @@ p {
   background-image: linear-gradient(rgba(20, 23, 23, 0.64), rgba(20, 23, 23, 0.64)), url('./grid-top-right.svg'), linear-gradient(rgba(20, 23, 23, 0.24), rgba(20, 23, 23, 0.24));
   background-position: 0 0, 0 0, 0 0;
   background-size: auto, auto 1130px, auto;
+  background-repeat: no-repeat;
+  /* FORCE L'IMAGE À ZOOMER POUR COUVRIR TOUT L'ÉCRAN */
+  background-size: cover !important;
+  /* CENTRE LA GRILLE POUR QUE LE ZOOM SOIT HARMONIEUX */
+  background-position: center top;
+  background-attachment: fixed;
   flex-direction: column;
   align-items: center;
   padding: 46px 48px 82px;
