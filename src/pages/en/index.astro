@@ -1,0 +1,116 @@
+---
+import Header from "@/components/Header.astro";
+import Sidebar from "@/components/Sidebar.astro";
+import Footer from "@/components/Footer.astro";
+
+import "@/layouts/index.css";
+
+import { Image } from 'astro:assets';
+
+// Imports des images (identiques à la version FR)
+import ateliersImg from '@/assets/frise geek touch caree.jpg';
+import prixImg from '@/assets/Bartok_Vincent_Noclin.jpg';
+import rechercheImg from '@/assets/comp_legende_EN_carre.png';
+import cvImg from '@/assets/adn.jpg';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<Header title="Sasha Darmon" />
+<body>
+<div class="content">
+  <Sidebar selectedItem="home" />
+  <nav class="main">
+    <div class="container">
+      <main class="fold-content-container">
+        <div class="fold-content">
+          <h1>Sasha Darmon</h1>
+          <div class="mini-label-white" style="color: #95ec38; font-weight: 700;">
+            Outreach & Research
+          </div>
+          <p class="lead">
+            PhD candidate in bioinformatics at the LBBE in Lyon, I am deeply committed to
+            <span style="color: #95ec38; font-weight: 500;">science outreach</span>.
+            I also serve as president of the science communication association
+            <i style="color: #95ec38; font-weight: 700;">Démesures</i>, organizing events
+            to make science accessible to everyone. Feel free to reach out to discuss
+            your projects or potential collaborations!
+          </p>
+
+          <!-- Mosaïque Title -->
+          <div class="mini-label-white gray-color">
+            Explore my work
+          </div>
+
+          <!-- 2x2 Mosaic Grid -->
+          <div class="mosaic-grid" style="display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 20px !important; width: 100% !important;">
+
+            <a href="/en/ateliers" class="mosaic-card" style="display: flex !important; width: 100% !important;">
+              <div class="mosaic-overlay"></div>
+              <Image src={ateliersImg} alt="Science outreach workshops organized at Japan Touch Haru" class="mosaic-img" />
+              <div class="mosaic-content">
+                <h3>Science Workshops</h3>
+                <p style="color: #95ec38 !important; font-weight: 500;">Design & Hosting</p>
+              </div>
+            </a>
+
+            <a href="/en/communication-prix" class="mosaic-card" style="display: flex !important; width: 100% !important;">
+              <div class="mosaic-overlay"></div>
+              <Image src={prixImg} alt="Science communication awards and conferences" class="mosaic-img" />
+              <div class="photo-credit-vertical-index">© Vincent Noclin</div>
+              <div class="mosaic-content">
+                <h3>Awards & Outreach</h3>
+                <p style="color: #95ec38 !important; font-weight: 500;">MT180, Graphic Novel, Science Festival</p>
+              </div>
+            </a>
+
+            <a href="/en/publications" class="mosaic-card" style="display: flex !important; width: 100% !important;">
+              <div class="mosaic-overlay"></div>
+              <Image src={rechercheImg} alt="Extended t-core visualization. Sasha Darmon research article" class="mosaic-img" />
+              <div class="mosaic-content">
+                <h3>Publications</h3>
+                <p style="color: #95ec38 !important; font-weight: 500;">Research & Articles</p>
+              </div>
+            </a>
+
+            <a href="/en/cv" class="mosaic-card" style="display: flex !important; width: 100% !important;">
+              <div class="mosaic-overlay"></div>
+              <Image src={cvImg} alt="DNA simulation for CV illustration" class="mosaic-img" />
+              <div class="photo-credit-vertical-index">© Unsplash/CC0 Public Domain</div>
+              <div class="mosaic-content">
+                <h3>My Resume</h3>
+                <p style="color: #95ec38 !important; font-weight: 500;">Background & Skills</p>
+              </div>
+            </a>
+
+          </div>
+
+          <div class="mini-label-white gray-color">
+            Contact
+          </div>
+
+          <div class="button-group">
+            <a href="https://www.linkedin.com/in/sashadarmon/" target="_blank" class="button w-button linkedin-btn">
+              <img src="/assets/LinkedIn_icon.svg" alt="LinkedIn Icon" class="btn-icon" />
+              LinkedIn
+            </a>
+            <a href="/en/contact" class="button w-button contact-btn">
+              Contact me
+            </a>
+          </div>
+
+          <blockquote class="scientific-quote">
+            <p>"There are no tomorrows that sing. There are only todays that rustle."</p>
+            <footer>
+              — <span class="author">Alain Damasio</span>, <cite>Les Furtifs (The Stealthies)</cite>
+            </footer>
+          </blockquote>
+        </div>
+
+      </main>
+      <Footer />
+    </div>
+  </nav>
+</div>
+</body>
+</html>

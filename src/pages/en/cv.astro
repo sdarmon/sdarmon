@@ -1,0 +1,179 @@
+---
+import Header from "@/components/Header.astro";
+import Sidebar from "@/components/Sidebar.astro";
+import Footer from "@/components/Footer.astro";
+import "@/layouts/index.css";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<Header title="My Resume | Sasha Darmon" />
+<body>
+<div class="content">
+    <Sidebar selectedItem="cv" />
+    <nav class="main">
+        <div class="container">
+            <main class="fold-content-container">
+
+                <a href="/en/" class="button w-button" style="margin-bottom: 32px; background-color: #353535; border-color: #353535;">← Back</a>
+
+                <div class="fold-content">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+                        <div>
+                            <h1>Sasha Darmon</h1>
+                            <p class="lead" style="color: #95ec38; font-weight: bold; margin-bottom: 5px;">
+                                PhD Candidate in Bioinformatics & Science Outreach
+                            </p>
+                            <p style="color: #a8a8a8; max-width: 500px;">
+                                Laboratory of Biometry and Evolutionary Biology (LBBE) <br> INRIA Lyon <br> Algorithms, Graphs, and Genetics.
+                            </p>
+                        </div>
+
+                        <!-- DOWNLOAD PDF BUTTON -->
+                        <a href="/assets/CV_Sasha_Darmon.pdf" target="_blank" class="button w-button" style="display: flex; gap: 10px; align-items: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+                            Download PDF
+                        </a>
+                    </div>
+
+                    <div class="cv-grid">
+
+                        <!-- LEFT COLUMN: ACADEMIC TIMELINE -->
+                        <div class="cv-left">
+                            <h3 class="section-title" style="margin-bottom: 24px;">Research & Education</h3>
+
+                            <div class="timeline">
+
+                                <div class="timeline-item">
+                                    <div class="tl-dot"></div>
+                                    <div class="tl-date">2023 - Present</div>
+                                    <div class="tl-title">PhD in Bioinformatics</div>
+                                    <div class="tl-org">LBBE, University of Lyon</div>
+                                    <div class="tl-desc">Algorithms, Graphs, and Genetics. Developing new computational methods for biological data analysis.</div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="tl-dot"></div>
+                                    <div class="tl-date">Oct 2022 - Feb 2023</div>
+                                    <div class="tl-title">Visiting Researcher (PLR Residency)</div>
+                                    <div class="tl-org">Penn State University, USA</div>
+                                    <div class="tl-desc">Developed an algorithm for annotating duplications in massive genome datasets. Supervised by Paul Medvedev.</div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="tl-dot"></div>
+                                    <div class="tl-date">Mar 2022 - Aug 2023</div>
+                                    <div class="tl-title">Research Internship</div>
+                                    <div class="tl-org">NII Tokyo, Japan</div>
+                                    <div class="tl-desc">Created a sequence clustering algorithm. Supervised by Takeaki Uno.</div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="tl-dot"></div>
+                                    <div class="tl-date">2019 - 2023</div>
+                                    <div class="tl-title">ENS de Lyon Diploma (MSc)</div>
+                                    <div class="tl-org">ENS Lyon</div>
+                                    <div class="tl-desc">Elite interdisciplinary program: Master's in Fundamental Computer Science (Major) and Biology (Minor). Graduated with honors.</div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- RIGHT COLUMN: SKILLS & TEACHING -->
+                        <div class="cv-right">
+
+                            <!-- TEACHING -->
+                            <div class="cv-section">
+                                <h3 class="section-title">Teaching</h3>
+                                <div class="timeline-item small">
+                                    <div class="tl-date">2023 - 2025</div>
+                                    <div class="tl-title">Teaching Assistant (UCBL)</div>
+                                    <div class="tl-desc">Mathematics for Biology & Introduction to Python.</div>
+                                </div>
+                                <div class="timeline-item small">
+                                    <div class="tl-date">2020 - 2022</div>
+                                    <div class="tl-title">Mathematics Tutor (Lycée du Parc)</div>
+                                    <div class="tl-desc">Weekly oral examinations ("colles") in intensive preparatory classes (MP).</div>
+                                </div>
+                            </div>
+
+                            <!-- TECHNICAL SKILLS -->
+                            <div class="cv-section" style="margin-top: 40px;">
+                                <h3 class="section-title">Technical Skills</h3>
+                                <div class="tech-group">
+                                    <h4>Development & Bioinfo</h4>
+                                    <div class="skills-tags">
+                                        <span>Rust</span>
+                                        <span>Python 3</span>
+                                        <span>C++</span>
+                                        <span>Bash</span>
+                                        <span>Awk</span>
+                                        <span>HTML/CSS</span>
+                                    </div>
+                                </div>
+                                <div class="tech-group">
+                                    <h4>Tools & Environment</h4>
+                                    <div class="skills-tags">
+                                        <span>Git / GitHub</span>
+                                        <span>SSH Servers</span>
+                                        <span>LaTeX</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- LANGUAGES -->
+                            <div class="cv-section" style="margin-top: 40px;">
+                                <h3 class="section-title">Languages</h3>
+                                <div class="tech-group">
+                                    <div class="skills-tags">
+                                        <span style="border-color: #95ec38;">English: C1 (Cambridge Advanced)</span>
+                                        <span>French: Native</span>
+                                        <span>Spanish: B1</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HIGHLIGHT BOX: PROJECT MANAGEMENT -->
+                <div class="highlight-box">
+                    <div class="title-with-icon">
+                        <span class="box-icon">💡</span>
+                        <h3>Project Management & Outreach</h3>
+                    </div>
+                    <p class="box-desc">
+                        Extensive experience in leading science communication events:
+                        from grant proposals and applications to budget management and logistics.
+                    </p>
+
+                    <ul class="impact-list">
+                        <li>
+                            <strong>President & Treasurer — Démesures Association (5 years)</strong><br/>
+                            Global leadership: budget management, volunteer team coordination, outreach training,
+                            design of educational workshops, and managing large-scale stands for the French Science Festival.
+                        </li>
+                        <li>
+                            <strong>Active Member — BDE ENS de Lyon (2 years)</strong><br/>
+                            Student union logistics: managed communication and coordinated integration events for
+                            incoming students.
+                        </li>
+                    </ul>
+
+                    <div class="skills-tags" style="margin-top: 15px;">
+                        <span>Project Management</span>
+                        <span>Team Leadership</span>
+                        <span>Budgeting</span>
+                        <span>Event Planning</span>
+                        <span>Inclusion</span>
+                    </div>
+                </div>
+            </main>
+            <Footer />
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+---
+import Header from "@/components/Header.astro";
+import Sidebar from "@/components/Sidebar.astro";
+import Footer from "@/components/Footer.astro";
+import "@/layouts/index.css";
+
+const HAL_ID = "sdarmon";
+const HAL_API_URL = `https://api.archives-ouvertes.fr/search/?q=authIdHal_s:${HAL_ID}&wt=json&fl=title_s,producedDateY_i,journalTitle_s,uri_s,docType_s,authFullName_s&sort=producedDateY_i+desc&rows=100`;
+
+let publications = [];
+let errorLoading = false;
+
+try {
+    const response = await fetch(HAL_API_URL);
+    if (!response.ok) throw new Error("API Error");
+    const data = await response.json();
+    publications = data.response.docs;
+} catch (e) {
+    console.error(e);
+    errorLoading = true;
+}
+
+// Labels traduits pour le public international
+const getDocTypeLabel = (type) => {
+    const types = {
+        'ART': 'Journal Article',
+        'COMM': 'Conference Paper / Talk',
+        'POSTER': 'Poster',
+        'THESE': 'PhD Thesis',
+        'COUV': 'Book Chapter',
+        'DOUV': 'Edited Book'
+    };
+    return types[type] || 'Publication';
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<Header title="Publications | Sasha Darmon" />
+<body>
+<div class="content">
+    <Sidebar selectedItem="publications" />
+    <nav class="main">
+        <div class="container">
+            <main class="fold-content-container">
+
+                <a href="/en/" class="button w-button" style="margin-bottom: 32px; background-color: #353535; border-color: #353535;">← Back</a>
+
+                <div class="fold-content">
+                    <h1>Scientific Publications</h1>
+                    <p class="lead">
+                        My research at the LBBE (Laboratory of Biometry and Evolutionary Biology) explores the boundaries of bioinformatics. Below is the list of my academic contributions, synchronized in real-time via the HAL open-access repository.
+                    </p>
+
+                    <div class="mini-label-white gray-color" style="margin-top: 40px; margin-bottom: 24px;">
+                        Open Access Repository (HAL)
+                    </div>
+
+                    {errorLoading && (
+                            <p style="color: #ff4444;">Unable to load publications at this time.</p>
+                    )}
+
+                    <div class="pub-list">
+                        {publications.length > 0 ? (
+                            publications.map((pub) => (
+                                    <div class="pub-item">
+                                        <div class="pub-type">{getDocTypeLabel(pub.docType_s)}</div>
+                                        <h3 class="pub-title">{pub.title_s[0]}</h3>
+                                        <div class="pub-meta">
+                                            <span class="pub-year">{pub.producedDateY_i}</span>
+                                            <span class="pub-sep">•</span>
+                                            <span class="pub-journal">{pub.journalTitle_s || "Conference / Seminar"}</span>
+                                        </div>
+                                        <a href={pub.uri_s} target="_blank" class="pub-link">
+                                            View on HAL ↗
+                                        </a>
+                                    </div>
+                            ))
+                        ) : (
+                                <p style="color: #a8a8a8; font-style: italic;">
+                                    No publications have been deposited on HAL yet for this identifier.
+                                </p>
+                        )}
+                    </div>
+                </div>
+
+            </main>
+            <Footer />
+        </div>
+    </nav>
+</div>
+
+<style>
+    /* Les styles restent identiques à la version française pour la cohérence */
+    .pub-list {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .pub-item {
+        border-left: 2px solid #353535;
+        padding-left: 24px;
+        transition: border-color 0.3s ease;
+    }
+
+    .pub-item:hover {
+        border-color: #95ec38;
+    }
+
+    .pub-type {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #95ec38;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    .pub-title {
+        color: #fff;
+        font-size: 1.25rem;
+        margin: 0 0 12px 0;
+        line-height: 1.4;
+    }
+
+    .pub-meta {
+        color: #a8a8a8;
+        font-size: 1rem;
+        margin-bottom: 16px;
+    }
+
+    .pub-sep {
+        margin: 0 8px;
+        opacity: 0.5;
+    }
+
+    .pub-link {
+        color: #3898ec;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+
+    .pub-link:hover {
+        color: #fff;
+        text-decoration: underline;
+    }
+</style>
+</body>
+</html>

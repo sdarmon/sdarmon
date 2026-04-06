@@ -1,0 +1,73 @@
+---
+import Header from "@/components/Header.astro";
+import Sidebar from "@/components/Sidebar.astro";
+import Footer from "@/components/Footer.astro";
+import "@/layouts/index.css";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<Header title="Contact | Sasha Darmon" />
+<body>
+<div class="content">
+    <Sidebar selectedItem="contact" />
+    <nav class="main">
+        <div class="container">
+            <main class="fold-content-container">
+
+                <a href="/en/" class="button w-button" style="margin-bottom: 32px; background-color: #353535; border-color: #353535;">← Back</a>
+
+                <div class="fold-content">
+                    <h1>Let's work together</h1>
+                    <p class="lead" style="margin-bottom: 40px;">
+                        Looking for an outreach workshop, a conference, or a scientific collaboration?
+                        Feel free to contact me via the form below or directly through my professional networks.
+                    </p>
+
+                    <!-- Quick contact buttons (Mail & LinkedIn) -->
+                    <div class="button-group" style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 60px;">
+                        <a href="https://www.linkedin.com/in/sashadarmon/" target="_blank" class="button w-button linkedin-btn">
+                            <img src="/assets/LinkedIn_icon.svg" alt="LinkedIn Icon" class="btn-icon" />
+                            LinkedIn
+                        </a>
+                        <a href="mailto:contact@sashadarmon.fr" class="button w-button contact-btn">E-mail</a>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="mini-label-white gray-color" style="margin-bottom: 24px; font-size: 14px; letter-spacing: 1.5px;">
+                        Or leave me a message
+                    </div>
+
+                    <form action="https://formspree.io/f/mwvwnnnp" method="POST" class="contact-form">
+
+                        <div class="form-group">
+                            <label for="name">Your Name / Institution</label>
+                            <input type="text" id="name" name="name" required placeholder="E.g.: Department of..." />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Your Email Address</label>
+                            <input type="email" id="email" name="_replyto" required placeholder="example@domain.com" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required rows="5" placeholder="Hello Sasha, we would like to organize a workshop..."></textarea>
+                        </div>
+
+                        <!-- Anti-spam field -->
+                        <input type="text" name="_gotcha" style="display:none" />
+
+                        <button type="submit" class="button w-button submit-btn">Send Message</button>
+                    </form>
+
+                </div>
+
+            </main>
+            <Footer />
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>

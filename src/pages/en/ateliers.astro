@@ -1,0 +1,163 @@
+---
+import Header from "@/components/Header.astro";
+import Sidebar from "@/components/Sidebar.astro";
+import Footer from "@/components/Footer.astro";
+import { Image } from 'astro:assets';
+import "@/layouts/index.css";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<Header title="Outreach Workshops | Sasha Darmon" />
+<body>
+<div class="content">
+    <Sidebar selectedItem="ateliers" />
+    <nav class="main">
+        <div class="container">
+            <main class="fold-content-container">
+
+                <a href="/en/" class="button w-button" style="margin-bottom: 32px; background-color: #353535; border-color: #353535;">← Back</a>
+
+                <div class="fold-content">
+                    <h1>Science Outreach Workshops</h1>
+                    <p class="lead" style="margin-bottom: 15px;">
+                        Through the <i><b>Démesures</b></i> association, I have had the opportunity to design and host a series
+                        of interactive workshops aimed at raising awareness about cognitive biases and developing
+                        critical thinking. These workshops, combining games, visual quizzes, and debates, were designed
+                        to be easily accessible and set up for any audience. The primary goal is to allow everyone
+                        to question, explore, and understand science without judgment!
+                    </p>
+
+                    <p class="lead">
+                        These workshops are typically presented at <i>Science Festivals</i> or cultural conventions
+                        (such as <i>Japan Touch/Geek Touch</i>). Training for facilitators takes less than an hour.
+                        Additional resources are also available to facilitate their reuse and understanding.
+                    </p>
+
+
+                    <!-- WORKSHOP 1: ESCAPE GAME -->
+                    <section class="workshop-section">
+                        <div class="workshop-text">
+                            <div class="workshop-badge">Escape Game</div>
+                            <h2>Lab Infiltration</h2>
+                            <p>Students take on the role of undercover <i>reviewers</i>.
+                                Their mission: verify the validity of the evidence for the discovery of the Almasty
+                                before its publication. To untangle truth from fiction, they will need to conduct
+                                microscopic, genetic, and computational analyses.
+                            </p>
+                            <div class="workshop-concepts">
+                                <span>Critical Thinking</span>
+                                <span>Cryptozoology</span>
+                                <span>Scientific Evidence</span>
+                                <span>Research</span>
+                                <span>Experimentation</span>
+                            </div>
+                        </div>
+                        <div class="workshop-gallery">
+                            <div class="gallery-grid">
+                                <div class="img-small"><img src="/photo/LBBE escape game.jpg" alt="Lab room with various samples from the Démesures escape game" data-credit="Gaspard Dussert" /></div>
+                                <div class="img-large"><img src="/photo/brochure.png" alt="Scientific escape game brochure" data-credit="Démesures"  /></div>
+                                <div class="img-small"><img src="/photo/LBBE escape game2.jpg" alt="Office room of the Démesures escape game" data-credit="Gaspard Dussert" /></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- WORKSHOP 2: MYSTERY IMAGES -->
+                    <section class="workshop-section reverse">
+                        <div class="workshop-text">
+                            <div class="workshop-badge">Visual Quiz</div>
+                            <h2>Mystery Images</h2>
+                            <p>
+                                The names, captions, and explanations of scientific images have been lost!
+                                It's up to you to find them. You will need to be observant to determine the
+                                scale of the photos and what they represent.
+                            </p>
+                            <div class="workshop-concepts">
+                                <span>Cognitive Biases</span>
+                                <span>Imaging Techniques</span>
+                                <span>Contextualization</span>
+                                <span>Scales</span>
+                                <span>Captions</span>
+                            </div>
+                        </div>
+                        <div class="workshop-gallery">
+                            <div class="gallery-grid">
+                                <div class="img-large"><img src="/photo/Don-Komarechka-meteorite-slice2.jpg" alt="Mystery image of a meteorite slice under polarized light" data-credit="Don Komarechka Photography, Ravna Gora, Varna, Canada"/></div>
+                                <div class="img-small"><img src="/photo/LBBE images mystères.jpg" alt="Mystery Images workshop at LBBE during the 2025 Science Festival" data-credit="Gaspard Dussert"  /></div>
+                                <div class="img-small"><img src="/photo/LBBE images mystères2.jpg" alt="Mystery Images workshop at LBBE during the 2025 Science Festival" data-credit="Gaspard Dussert" /></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- WORKSHOP 3: AI VS REAL -->
+                    <section class="workshop-section">
+                        <div class="workshop-text">
+                            <div class="workshop-badge">Debate & AI</div>
+                            <h2>Real or Artificial?</h2>
+                            <p>Ten themes, two images per theme: one is real, the other is AI-generated.
+                                Can you tell the difference? </p>
+                            <div class="workshop-concepts">
+                                <span>Generative AI</span>
+                                <span>Critical Thinking</span>
+                                <span>Debate</span>
+                            </div>
+                        </div>
+                        <div class="workshop-gallery">
+                            <div class="gallery-grid">
+                                <div class="img-large"><img src="/photo/IAouPAS.jpg" alt="Display of 20 images for the AI vs Real quiz" /></div>
+                                <div class="img-small"><img src="/photo/LBBE IA ou reelle2.jpg" alt="AI vs Real workshop at LBBE during the 2025 Science Festival" data-credit="Gaspard Dussert" /></div>
+                                <div class="img-small"><img src="/photo/LBBE IA ou reelle.jpg" alt="AI vs Real workshop at LBBE during the 2025 Science Festival" data-credit="Gaspard Dussert" /></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- QUIZ SECTION -->
+                    <div class="ia-quiz-container">
+                        <p class="quiz-instruction">Mini-quiz: Which cat is real?</p>
+
+                        <div class="ia-grid">
+                            <div class="ia-item real-cat">
+                                <img src="/photo/chat.png" alt="Hécate" />
+                                <div class="cat-label">Cat #1</div>
+                            </div>
+
+                            <div class="ia-item">
+                                <img src="/photo/IA.png" alt="AI-generated photo of a cat" />
+                                <div class="cat-label">Cat #2</div>
+                            </div>
+                        </div>
+
+                        <div class="solution-wrapper">
+                            <button id="reveal-btn" class="solution-btn">Show answer</button>
+                            <p id="solution-text" class="solution-text">
+                                <strong>Cat #1</strong> is real! That's <strong>Hécate</strong>, my cat 🐈‍⬛ <br>The other image was generated by DALL-E 3.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <Footer />
+        </div>
+    </nav>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <div class="lightbox-container">
+        <img class="lightbox-content" id="lightbox-img" src="" alt="" />
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+</div>
+
+</body>
+</html>
+
+<script>
+    import { initLightbox, initQuizIA } from '@/scripts/atelier.js';
+
+    document.addEventListener('astro:page-load', () => {
+        initLightbox();
+        initQuizIA();
+    });
+</script>
