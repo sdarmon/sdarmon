@@ -16,6 +16,10 @@ const t = ui[lang];
 
 // Construction du titre final
 const finalTitle = `${title} | Sasha Darmon - ${t['seo.suffix']}`;
+//Image
+const ogImage = lang === 'en'
+    ? 'https://sashadarmon.fr/assets/banner-en.jpg'
+    : 'https://sashadarmon.fr/assets/banner.jpg';
 ---
 
 <head prefix="og: http://ogp.me/ns#">
@@ -34,7 +38,7 @@ const finalTitle = `${title} | Sasha Darmon - ${t['seo.suffix']}`;
   <meta property="og:url" content={Astro.url} />
   <meta property="og:title" content={finalTitle} />
   <meta property="og:description" content={t['seo.ogDescription']} />
-  <meta property="og:image" content="https://sashadarmon.fr/assets/banner.jpg" />
+  <meta property="og:image" content={ogImage} />
   <meta property="og:site_name" content="Sasha Darmon" />
 
   <!-- TWITTER -->
