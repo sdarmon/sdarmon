@@ -1,9 +1,9 @@
 ---
-import Header from "../components/Header.astro";
-import Sidebar from "../components/Sidebar.astro";
-import Footer from "../components/Footer.astro";
+import Header from "@/components/Header.astro";
+import Sidebar from "@/components/Sidebar.astro";
+import Footer from "@/components/Footer.astro";
 import { Image } from 'astro:assets';
-import "../layouts/index.css";
+import "@/layouts/index.css";
 
 // Importe tes images ici (Exemple pour le premier atelier)
 ---
@@ -160,14 +160,14 @@ import "../layouts/index.css";
 </html>
 
 <script>
-    import { initLightbox } from '../scripts/atelier.js';
+    import { initLightbox } from '@/scripts/atelier.js';
 
     // On initialise la lightbox à chaque fois que la page est chargée
     document.addEventListener('astro:page-load', () => {
         initLightbox();
     });
 
-    import { initQuizIA } from '../scripts/atelier.js';
+    import { initQuizIA } from '@/scripts/atelier.js';
 
     // On initialise la lightbox à chaque fois que la page est chargée
     document.addEventListener('astro:page-load', () => {

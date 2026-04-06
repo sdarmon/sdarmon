@@ -1,11 +1,21 @@
 ---
-// src/components/Footer.astro
+import { ui } from '@/i18n/ui';
+
+// 1. Détecter la langue actuelle
+const pathname = Astro.url.pathname;
+const lang = pathname.startsWith('/en') ? 'en' : 'fr';
+const t = ui[lang];
+
+// 2. Définir le lien vers les mentions légales selon la langue
+const legalPath = lang === 'fr' ? '/mentions-legales' : '/en/mentions-legales';
 ---
 <footer class="site-footer">
     <div class="footer-line"></div>
     <p>
-        © {new Date().getFullYear()} Sasha Darmon <span class="separator">|</span>
-        <a href="/mentions-legales" class="legal-link">Mentions légales</a>
+        © {new Date().getFullYear()} Sasha Darmon
+        <span class="separator">|</span>
+        <!-- Utilisation de la clé footer.property pour la traduction -->
+        <a href={legalPath} class="legal-link">{t['footer.property']}</a>
     </p>
 </footer>
 
@@ -18,30 +28,30 @@
         width: 100%;
     }
     .footer-line {
-        width: 50px; /* On réduit un peu la ligne pour la discrétion */
+        width: 50px;
         height: 1px;
         background-color: #353535;
         margin: 0 auto 20px;
     }
     .site-footer p {
         font-size: 11px;
-        color: #666; /* Gris discret */
+        color: #666;
         font-family: 'Exo 2', sans-serif;
         letter-spacing: 0.5px;
         line-height: 1.5;
     }
     .separator {
         margin: 0 8px;
-        color: #333; /* Encore plus discret que le texte */
+        color: #333;
     }
     .legal-link {
-        color: #666; /* Même couleur que le texte pour s'incruster */
+        color: #666;
         text-decoration: none;
         transition: color 0.3s ease;
         border-bottom: 1px solid transparent;
     }
     .legal-link:hover {
-        color: #95ec38; /* Ne devient visible (vert) qu'au survol */
+        color: #95ec38;
         border-bottom: 1px solid #95ec38;
     }
 </style>

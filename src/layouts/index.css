@@ -768,7 +768,7 @@
 /* GRILLE PRINCIPALE */
 .cv-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr; /* Colonne droite légèrement plus large */
+    grid-template-columns: 1.1fr 1fr; /* Colonne droite légèrement plus large */
     gap: 60px;
     margin-top: 40px;
 }
@@ -1031,5 +1031,65 @@ input::placeholder, textarea::placeholder {
 .submit-btn:hover {
     background-color: #4a7519;
     border-color: #4a7519;
+}
+/* Filtre "Vibrant" pour le vert #95ec38 */
+/* On force d'abord l'icône à devenir noire (brightness 0),
+   puis on applique les réglages pour atteindre le vert exact */
+:root {
+    --green-filter: brightness(0) saturate(100%) invert(86%) sepia(30%) saturate(1437%) hue-rotate(42deg) brightness(97%) contrast(103%);
+}
+
+/* État ACTIF */
+.nav-link-container.w--current {
+    background-color: rgba(149, 236, 56, 0.1) !important;
+    border-color: #95ec38 !important;
+    color: #95ec38 !important;
+}
+
+.nav-link-container.w--current .nav-link-image {
+    filter: var(--green-filter) !important;
+    opacity: 1 !important; /* Force l'icône à être 100% opaque */
+}
+
+/* État HOVER */
+.nav-link-container:hover {
+    color: #95ec38 !important;
+    background-color: rgba(149, 236, 56, 0.05) !important;
+    border-color: rgba(149, 236, 56, 0.3) !important;
+}
+
+.nav-link-container:hover .nav-link-image {
+    filter: var(--green-filter) !important;
+    opacity: 1 !important;
+}
+
+/* Transition fluide */
+.nav-link-container, .nav-link-image {
+    transition: all 0.2s ease-in-out !important;
+}
+.lang-switcher {
+    margin-top: auto;        /* Pousse le bloc tout en bas */
+    width: 100%;             /* Prend toute la largeur de la sidebar */
+    display: flex;           /* Active flexbox */
+    justify-content: center; /* Centre horizontalement le contenu */
+    align-items: center;     /* Aligne verticalement (pour le séparateur) */
+    padding: 30px 0;         /* Espace en haut et en bas */
+
+    font-family: 'Exo 2', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.lang-switcher a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0 10px;        /* Espace cliquable autour des lettres */
+    transition: color 0.3s;
+}
+
+.lang-switcher a.active {
+    color: #95ec38; /* Ton vert */
+    font-weight: bold;
 }
 </style>

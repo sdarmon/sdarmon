@@ -1,10 +1,29 @@
 ---
 const { selectedItem } = Astro.props;
-
 import { Image } from 'astro:assets';
+import profilImg from '@/assets/profil.JPG';
+import { ui } from '@/i18n/ui';
 
-// 2. On importe les vrais fichiers images depuis src/assets/
-import profilImg from '../assets/profil.JPG';
+// 1. On récupère le chemin actuel (ex: /ateliers ou /en/ateliers)
+const pathname = Astro.url.pathname;
+
+// 2. On détecte la langue actuelle
+const lang = pathname.startsWith('/en') ? 'en' : 'fr';
+const t = ui[lang];
+
+// 3. LOGIQUE DU SWITCHER : Calcul des URLs correspondantes
+// Lien FR : on enlève le préfixe "/en" s'il existe
+const frPath = lang === 'en'
+    ? pathname.replace(/^\/en/, '') || '/'
+    : pathname;
+
+// Lien EN : on ajoute le préfixe "/en" s'il n'existe pas
+const enPath = lang === 'fr'
+    ? `/en${pathname === '/' ? '/' : pathname}`
+    : pathname;
+
+// Fonction utilitaire pour les liens du menu (inchangée)
+const l = (path) => lang === 'fr' ? path : `/en${path === '/' ? '' : path}`;
 ---
 
 <aside
@@ -17,12 +36,14 @@ import profilImg from '../assets/profil.JPG';
     class="sidebar w-nav"
 >
   <div class="nav-content">
-    <a href="/" class="w-nav-brand" aria-label="home">
+    <!-- Brand / Profil -->
+    <a href={l('/')} class="w-nav-brand" aria-label="home">
       <div class="niv-data">
         <Image src={profilImg} alt="Sasha Darmon" class="niv-image" />
         <div>
           <div class="label-white"><b>Sasha Darmon</b></div>
-          <div class="label-gray"><b>Doctorant</b></div>
+          <!-- Traduction du titre sous le nom -->
+          <div class="label-gray"><b>{lang === 'fr' ? 'Doctorant' : 'PhD Candidate'}</b></div>
         </div>
       </div>
     </a>
@@ -30,163 +51,83 @@ import profilImg from '../assets/profil.JPG';
     <nav role="navigation" class="w-nav-menu">
       <!-- 1. Accueil -->
       <a
-          href="/"
-          class={`nav-link-container w-inline-block ${
-              selectedItem === 'home' ? 'w--current' : ''
-          }`}
+          href={l('/')}
+          class={`nav-link-container w-inline-block ${selectedItem === 'home' ? 'w--current' : ''}`}
       >
-        <img
-            src="/assets/home.svg"
-            loading="eager"
-            alt=""
-            class="nav-link-image"
-        />
-        <div>Accueil</div>
+        <img src="/assets/home.svg" loading="eager" alt="" class="nav-link-image" />
+        <div>{t['nav.home']}</div>
       </a>
 
       <!-- 2. Ateliers Médiations -->
       <a
-          href="/ateliers"
-          class={`nav-link-container w-inline-block ${
-              selectedItem === 'ateliers' ? 'w--current' : ''
-          }`}
+          href={l('/ateliers')}
+          class={`nav-link-container w-inline-block ${selectedItem === 'ateliers' ? 'w--current' : ''}`}
       >
-        <img
-            src="/assets/puzzle.svg"
-            loading="eager"
-            alt=""
-            class="nav-link-image"
-        />
-        <div>Ateliers de médiation</div>
+        <img src="/assets/puzzle.svg" loading="eager" alt="" class="nav-link-image" />
+        <div>{t['nav.ateliers']}</div>
       </a>
 
       <!-- 3. Communication & Prix -->
       <a
-          href="/communication-prix"
-          class={`nav-link-container w-inline-block ${
-              selectedItem === 'communication' ? 'w--current' : ''
-          }`}
+          href={l('/communication-prix')}
+          class={`nav-link-container w-inline-block ${selectedItem === 'communication' ? 'w--current' : ''}`}
       >
-        <img
-            src="/assets/trophy.svg"
-            loading="eager"
-            alt=""
-            class="nav-link-image"
-        />
-        <div>Communication & prix</div>
+        <img src="/assets/trophy.svg" loading="eager" alt="" class="nav-link-image" />
+        <div>{t['nav.com']}</div>
       </a>
 
       <!-- 4. Publications -->
       <a
-          href="/publications"
-          class={`nav-link-container w-inline-block ${
-              selectedItem === 'publications' ? 'w--current' : ''
-          }`}
+          href={l('/publications')}
+          class={`nav-link-container w-inline-block ${selectedItem === 'publications' ? 'w--current' : ''}`}
       >
-        <img
-            src="/assets/code.svg"
-            loading="eager"
-            alt=""
-            class="nav-link-image"
-        />
-        <div>Publications</div>
+        <img src="/assets/code.svg" loading="eager" alt="" class="nav-link-image" />
+        <div>{t['nav.publi']}</div>
       </a>
 
       <!-- 5. CV -->
       <a
-          href="/cv"
-          class={`nav-link-container w-inline-block ${
-              selectedItem === 'cv' ? 'w--current' : ''
-          }`}
+          href={l('/cv')}
+          class={`nav-link-container w-inline-block ${selectedItem === 'cv' ? 'w--current' : ''}`}
       >
-        <img
-            src="/assets/cv.svg"
-            loading="eager"
-            alt=""
-            class="nav-link-image"
-        />
-        <div>Mon CV</div>
+        <img src="/assets/cv.svg" loading="eager" alt="" class="nav-link-image" />
+        <div>{t['nav.cv']}</div>
       </a>
 
       <!-- 6. Contact -->
       <a
-          href="/contact"
-          class={`nav-link-container w-inline-block ${
-              selectedItem === 'contact' ? 'w--current' : ''
-          }`}
+          href={l('/contact')}
+          class={`nav-link-container w-inline-block ${selectedItem === 'contact' ? 'w--current' : ''}`}
       >
-        <img
-            src="/assets/chat.svg"
-            loading="eager"
-            alt=""
-            class="nav-link-image"
-        />
-        <div>Contact</div>
+        <img src="/assets/chat.svg" loading="eager" alt="" class="nav-link-image" />
+        <div>{t['nav.contact']}</div>
       </a>
     </nav>
 
-    <div
-        class="navbar-icon-button w-nav-button"
-        style="-webkit-user-select: text;"
-        aria-label="menu"
-        role="button"
-        tabindex="0"
-    >
-      <img
-          src="/assets/menu.svg"
-          loading="eager"
-          alt=""
-          class="navbar-icon"
-      />
+    <!-- Bouton Menu Mobile -->
+    <div class="navbar-icon-button w-nav-button" role="button" tabindex="0">
+      <img src="/assets/menu.svg" loading="eager" alt="" class="navbar-icon" />
+    </div>
+
+    <!-- SÉLECTEUR DE LANGUE -->
+    <div class="lang-switcher">
+      <!-- On utilise frPath au lieu de "/" -->
+      <a href={frPath} class={lang === 'fr' ? 'active' : ''}>FR</a>
+
+      <span class="separator">|</span>
+
+      <!-- On utilise enPath au lieu de "/en/" -->
+      <a href={enPath} class={lang === 'en' ? 'active' : ''}>EN</a>
     </div>
   </div>
-  <style>
-    /* Filtre "Vibrant" pour le vert #95ec38 */
-    /* On force d'abord l'icône à devenir noire (brightness 0),
-       puis on applique les réglages pour atteindre le vert exact */
-    :root {
-      --green-filter: brightness(0) saturate(100%) invert(86%) sepia(30%) saturate(1437%) hue-rotate(42deg) brightness(97%) contrast(103%);
-    }
-
-    /* État ACTIF */
-    .nav-link-container.w--current {
-      background-color: rgba(149, 236, 56, 0.1) !important;
-      border-color: #95ec38 !important;
-      color: #95ec38 !important;
-    }
-
-    .nav-link-container.w--current .nav-link-image {
-      filter: var(--green-filter) !important;
-      opacity: 1 !important; /* Force l'icône à être 100% opaque */
-    }
-
-    /* État HOVER */
-    .nav-link-container:hover {
-      color: #95ec38 !important;
-      background-color: rgba(149, 236, 56, 0.05) !important;
-      border-color: rgba(149, 236, 56, 0.3) !important;
-    }
-
-    .nav-link-container:hover .nav-link-image {
-      filter: var(--green-filter) !important;
-      opacity: 1 !important;
-    }
-
-    /* Transition fluide */
-    .nav-link-container, .nav-link-image {
-      transition: all 0.2s ease-in-out !important;
-    }
-  </style>
 
   <script>
-    import { setupNav } from '../scripts/nav.js';
-
+    import { setupNav } from '@/scripts/nav.js';
     let cleanup;
     document.addEventListener('astro:page-load', () => {
       if (cleanup) cleanup();
       cleanup = setupNav();
     });
-
     document.addEventListener('astro:before-swap', () => {
       if (cleanup) cleanup();
     });
