@@ -4,6 +4,12 @@ interface HeaderProps {
   title: string;
 }
 const { title } = Astro.props as HeaderProps;
+// Import de la police (400 = texte normal, 700 = texte en gras)
+// C'est mieux d'importer les deux si tu utilises du gras sur ton site !
+import '@fontsource/exo-2/400.css';
+import '@fontsource/exo-2/700.css';
+
+import { ClientRouter } from 'astro:transitions';
 ---
 
 <head>
